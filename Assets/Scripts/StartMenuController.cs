@@ -47,9 +47,6 @@ public class StartMenuController : MonoBehaviour
         SceneManager.LoadScene(mainSceneName);
     }
 
-    // ---------------------------
-    //  ADD THIS ↓
-    // ---------------------------
     public void OnClickQuit()
     {
         Debug.Log("Quit button clicked");

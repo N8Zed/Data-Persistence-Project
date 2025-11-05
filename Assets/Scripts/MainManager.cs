@@ -11,11 +11,12 @@ public class MainManager : MonoBehaviour
     public int LineCount = 6;
     public Rigidbody Ball;
 
-    public Text ScoreText;
-    public Text BestScoreText;
+    public TMP_Text ScoreText;
+    public TMP_Text BestScoreText;
     public GameObject GameOverText;
     public GameObject NewPlayerButton;
     public GameObject RestartButton;
+    public GameObject QuitButton;
 
     private bool m_Started = false;
     private int m_Points;
@@ -84,6 +85,7 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         NewPlayerButton.SetActive(true);
         RestartButton.SetActive(true);
+        QuitButton.SetActive(true);
 
         GameSession.Ensure();
         var playerName = GameSession.Instance.PlayerName;
@@ -110,5 +112,17 @@ public class MainManager : MonoBehaviour
 
         var current = SceneManager.GetActiveScene();
         SceneManager.LoadScene(current.buildIndex);
+    }
+
+    public void OnClickQuit()
+    {
+        Debug.Log("Quit button clicked");
+
+        Application.Quit();
+
+#if UNITY_EDITOR
+        // So quitting actually works inside the editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

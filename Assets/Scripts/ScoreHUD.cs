@@ -1,17 +1,10 @@
 using UnityEngine;
-#if TMP_PRESENT
 using TMPro;
-#endif
 
 public class ScoreHUD : MonoBehaviour
 {
-#if TMP_PRESENT
     [SerializeField] private TMP_Text playerAndScoreText;
     [SerializeField] private TMP_Text highScoreText;
-#else
-    [SerializeField] private UnityEngine.UI.Text playerAndScoreText;
-    [SerializeField] private UnityEngine.UI.Text highScoreText;
-#endif
 
     private void Start()
     {
@@ -21,7 +14,6 @@ public class ScoreHUD : MonoBehaviour
 
     private void Update()
     {
-        // Cheap, reliable refresh; for bigger projects, event this instead.
         RefreshCurrent();
         RefreshHighScore();
     }
